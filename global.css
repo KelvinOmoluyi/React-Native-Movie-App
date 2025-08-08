@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import "./app/test.css";
+
+* {
+  background-color: lime !important; /* test background */
+}
