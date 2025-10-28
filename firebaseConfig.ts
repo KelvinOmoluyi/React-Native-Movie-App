@@ -7,14 +7,19 @@ import { getReactNativePersistence, initializeAuth } from "firebase/auth";
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+// To keep your Firebase credentials secure, you should NOT hardcode them in your source files.
+// Instead, use environment variables. For Expo, you can configure them in app.json/app.config.js or use dotenv for React Native CLI apps.
+
+import Constants from 'expo-constants';
+
 const firebaseConfig = {
-  apiKey: "AIzaSyALBnlDRly-1uKbKe5GGLrXKy0TDc0BtyQ",
-  authDomain: "movieflix-7c201.firebaseapp.com",
-  projectId: "movieflix-7c201",
-  storageBucket: "movieflix-7c201.firebasestorage.app",
-  messagingSenderId: "367831309119",
-  appId: "1:367831309119:web:990fdcb78277e31013118a",
-  measurementId: "G-84LXH7Y2GF"
+  apiKey: Constants.expoConfig?.extra?.firebaseApiKey,
+  authDomain: Constants.expoConfig?.extra?.firebaseAuthDomain,
+  projectId: Constants.expoConfig?.extra?.firebaseProjectId,
+  storageBucket: Constants.expoConfig?.extra?.firebaseStorageBucket,
+  messagingSenderId: Constants.expoConfig?.extra?.firebaseMessagingSenderId,
+  appId: Constants.expoConfig?.extra?.firebaseAppId,
+  measurementId: Constants.expoConfig?.extra?.firebaseMeasurementId,
 };
 
 // Initialize Firebase
