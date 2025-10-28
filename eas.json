@@ -1,0 +1,37 @@
+{
+  "cli": {
+    "version": ">= 16.19.3",
+    "appVersionSource": "remote"
+  },
+  "build": {
+    "development": {
+      "developmentClient": true,
+      "distribution": "internal"
+    },
+    "preview": {
+      "distribution": "internal",
+      "env": {
+        "MOVIE_API_KEY": "$MOVIE_API_KEY",
+        "APPWRITE_PROJECT_ID": "$APPWRITE_PROJECT_ID",
+        "APPWRITE_DATABASE_ID": "$APPWRITE_DATABASE_ID",
+        "APPWRITE_METRICS_TABLE_ID": "$APPWRITE_METRICS_TABLE_ID",
+        "APPWRITE_SAVED_TABLE_ID": "$APPWRITE_SAVED_TABLE_ID",
+        "APPWRITE_ENDPOINT": "$APPWRITE_ENDPOINT"
+      }
+    },
+    "production": {
+      "autoIncrement": true,
+      "env": {
+        "MOVIE_API_KEY": "$MOVIE_API_KEY",
+        "APPWRITE_PROJECT_ID": "$APPWRITE_PROJECT_ID",
+        "APPWRITE_DATABASE_ID": "$APPWRITE_DATABASE_ID",
+        "APPWRITE_METRICS_TABLE_ID": "$APPWRITE_METRICS_TABLE_ID",
+        "APPWRITE_SAVED_TABLE_ID": "$APPWRITE_SAVED_TABLE_ID",
+        "APPWRITE_ENDPOINT": "$APPWRITE_ENDPOINT"
+      }
+    }
+  },
+  "submit": {
+    "production": {}
+  }
+}
