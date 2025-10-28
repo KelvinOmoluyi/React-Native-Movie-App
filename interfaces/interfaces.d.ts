@@ -15,12 +15,35 @@ interface Movie {
   vote_count: number;
 }
 
+interface SavedMovie {
+  movie_id: number;
+  title: string;
+  adult: boolean;
+  genre_ids: number[];
+  original_language: string;
+  original_title: string;
+  overview: string;
+  popularity: number;
+  poster_path: string;
+  release_date: string;
+  video: boolean;
+  vote_average: number;
+  vote_count: number;
+}
+
 interface TrendingMovie {
   searchTerm: string;
   movie_id: number;
   title: string;
   count: number;
   poster_url: string;
+}
+
+interface SavedMovie {
+  id: string;
+  movie_id: string;
+  title: string;
+  poster_path: string;
 }
 
 interface MovieDetails {
