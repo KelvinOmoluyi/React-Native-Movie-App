@@ -1,33 +1,39 @@
 {
   "cli": {
-    "version": ">= 16.19.3",
+    "version": ">= 4.0.0",
     "appVersionSource": "remote"
   },
   "build": {
     "development": {
       "developmentClient": true,
-      "distribution": "internal"
+      "distribution": "internal",
+      "android": {
+        "gradleCommand": ":app:assembleDebug"
+      },
+      "ios": {
+        "buildConfiguration": "Debug"
+      }
     },
     "preview": {
       "distribution": "internal",
-      "env": {
-        "MOVIE_API_KEY": "$MOVIE_API_KEY",
-        "APPWRITE_PROJECT_ID": "$APPWRITE_PROJECT_ID",
-        "APPWRITE_DATABASE_ID": "$APPWRITE_DATABASE_ID",
-        "APPWRITE_METRICS_TABLE_ID": "$APPWRITE_METRICS_TABLE_ID",
-        "APPWRITE_SAVED_TABLE_ID": "$APPWRITE_SAVED_TABLE_ID",
-        "APPWRITE_ENDPOINT": "$APPWRITE_ENDPOINT"
+      "channel": "preview",
+      "autoIncrement": true,
+
+      "android": {
+        "gradleCommand": ":app:assembleRelease"
+      },
+      "ios": {
+        "buildConfiguration": "Release"
       }
     },
     "production": {
       "autoIncrement": true,
-      "env": {
-        "MOVIE_API_KEY": "$MOVIE_API_KEY",
-        "APPWRITE_PROJECT_ID": "$APPWRITE_PROJECT_ID",
-        "APPWRITE_DATABASE_ID": "$APPWRITE_DATABASE_ID",
-        "APPWRITE_METRICS_TABLE_ID": "$APPWRITE_METRICS_TABLE_ID",
-        "APPWRITE_SAVED_TABLE_ID": "$APPWRITE_SAVED_TABLE_ID",
-        "APPWRITE_ENDPOINT": "$APPWRITE_ENDPOINT"
+      "channel": "production",
+      "android": {
+        "gradleCommand": ":app:assembleRelease"
+      },
+      "ios": {
+        "buildConfiguration": "Release"
       }
     }
   },

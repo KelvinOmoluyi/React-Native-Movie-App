@@ -1,0 +1,25 @@
+expo-auth-session
+expo-crypto
+expo-web-browser: so we can create a browser in the app and sign in with google without leaving the app
+react-native-web: to somehow show that the app can aslo run on web
+react-dom:
+@expo/webpack-config
+@react-native-async-storage/async-storage
+
+
+eas build:configure --platform android
+eas credentials -p android
+Build Credentials 41pS7t22xc
+
+Type                JKS
+Key Alias           f599bb03c6d2cc21b45fae976bbd6c2c
+MD5 Fingerprint     A6:52:80:2F:77:8B:85:59:4D:AC:36:FB:61:40:D7:2B
+SHA1 Fingerprint    6A:C8:62:12:53:D3:0F:51:93:9B:75:00:84:2A:EA:E2:6A:0D:EF:A4
+SHA256 Fingerprint  FA:EB:28:87:C6:F5:8E:0F:AF:CC:79:92:E1:6A:A8:AE:DC:73:E6:F1:BC:7F:F5:70:6F:A8:BF:FE:C7:98:CB:A5
+
+937381050543-4f6dl7u7t8dakuevi2prh5g51bkcjqdp.apps.googleusercontent.com
+
+"scheme": is the name that'll allow us to redirect back to the application
+
+937381050543-4stolofqj0dlc4a67feo06jsvjgm56b2.apps.googleusercontent.com
+

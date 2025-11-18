@@ -3,6 +3,13 @@ export default {
     name: 'MovieFlix',
     slug: 'mobile_movie_app',
     version: '1.0.0',
+    updates: {
+      url: "https://u.expo.dev/01c82d8a-30d1-4a62-8a63-b9afbc6b215a",
+      checkAutomatically: "NEVER"
+    },
+    runtimeVersion: {
+      policy: "appVersion"
+    },
     orientation: 'portrait',
     icon: './assets/images/logo.png',
     scheme: 'mobilemovieapp',
@@ -36,7 +43,7 @@ export default {
           backgroundColor: '#ffffff'
         }
       ],
-      'expo-web-browser'
+      'expo-web-browser',
     ],
     experiments: {
       typedRoutes: true
@@ -46,15 +53,19 @@ export default {
       eas: {
         projectId: '01c82d8a-30d1-4a62-8a63-b9afbc6b215a'
       },
-      // Secure injected variables (non-public, not inlined in bundle)
       movieApiKey: process.env.MOVIE_API_KEY,
       appwriteProjectId: process.env.APPWRITE_PROJECT_ID,
       appwriteDatabaseId: process.env.APPWRITE_DATABASE_ID,
       appwriteMetricsTableId: process.env.APPWRITE_METRICS_TABLE_ID,
       appwriteSavedTableId: process.env.APPWRITE_SAVED_TABLE_ID,
       appwriteEndpoint: process.env.APPWRITE_ENDPOINT,
-      // Add fallbacks or more logic if needed, e.g.:
-      // environment: process.env.EXPO_PUBLIC_ENVIRONMENT || 'development'
+      firebaseApiKey: process.env.FIREBASE_API_KEY,
+      firebaseAuthDomain: process.env.FIREBASE_AUTH_DOMAIN,
+      firebaseProjectId: process.env.FIREBASE_PROJECT_ID,
+      firebaseStorageBucket: process.env.FIREBASE_STORAGE_BUCKET,
+      firebaseMessagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID,
+      firebaseAppId: process.env.FIREBASE_APP_ID,
+      firebaseMeasurementId: process.env.FIREBASE_MEASUREMENT_ID,
     }
   }
 };
