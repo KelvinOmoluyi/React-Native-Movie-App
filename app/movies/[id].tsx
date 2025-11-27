@@ -89,7 +89,7 @@ const Details = () => {
           className={`absolute bottom-5 right-5 rounded-full size-14 ${saved ? "bg-accent" : "bg-primary"} border-2 border-accent  flex items-center justify-center`}>
             <Image
               source={saved ? icons.saveWhite : icons.save}
-              className="w-6 h-7 ml-1"
+              className="w-5 h-7"
               resizeMode="contain"
             />
           </TouchableOpacity>

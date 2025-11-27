@@ -4,15 +4,10 @@ import { icons } from '@/constants/icons';
 import { images } from '@/constants/images';
 import { auth } from '@/firebaseConfig';
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { makeRedirectUri } from "expo-auth-session";
-import * as Google from "expo-auth-session/providers/google";
 import { router } from 'expo-router';
-import * as WebBrowser from "expo-web-browser";
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import React from 'react';
 import { Image, Keyboard, Text, TouchableOpacity, TouchableWithoutFeedback, View } from 'react-native';
-
-WebBrowser.maybeCompleteAuthSession();
 
 const Login = () => {
   const [inputObj, setInputObj] = React.useState({
@@ -75,51 +70,13 @@ const Login = () => {
       setLoading(false);
     }
   }
-
-  const signUp = async () => {
-    if (!validateForm()) {
-      return;
-    }
-
-    try {
-      const user = await signInWithEmailAndPassword(auth, inputObj.email, inputObj.password);
-      if (user) router.replace("/(tabs)");
-    } catch (error: any) {
-      console.log(error);
-      console.log('sign in failed: ' + error.message);
-    }
-  }
-
-  const redirectUri = makeRedirectUri({ scheme: 'mymovieapp' });
-
-  const [request, response, promptAsync] = Google.useAuthRequest({
-    webClientId: "937381050543-4stolofqj0dlc4a67feo06jsvjgm56b2.apps.googleusercontent.com",
-    androidClientId: "937381050543-4f6dl7u7t8dakuevi2prh5g51bkcjqdp.apps.googleusercontent.com",
-    iosClientId: "937381050543-8ri74040c8ja72kqp97kshkmi86ev2ks.apps.googleusercontent.com",
-    
-    scopes: ['profile', 'email', 'openid'], // Requested permissionsscopes: ['openid', 'email', 'profile'],
-  })
-
-  React.useEffect(() => {
-    handleSignInWithGoogle();
-  }, [response]);
+  
 
   const getLocalUser = async () => {
     const data = await AsyncStorage.getItem("@user");
     if (!data) return null;
     return JSON.parse(data);
   };
-
-  async function handleSignInWithGoogle() {
-    const user = await AsyncStorage.getItem("@user");
-    if (!user) {
-      if (response?.type === "success") {
-        await getUserInfo(response.authentication?.accessToken)
-      }
-    } else {
-      setUserInfo(JSON.parse(user));
-    }
-  }
 
   const getUserInfo = async (token: string | undefined) => {
     if (!token) return;
@@ -182,18 +139,6 @@ const Login = () => {
               onPress={signIn}>
                 <Text className="text-white font-semibold text-base">{loading ? "Loading..." : "Log in"}</Text>
               </TouchableOpacity>  
-
-              <TouchableOpacity
-              className="w-full bg-white rounded-lg py-5 flex flex-row items-center justify-center"
-              onPress={() => promptAsync()}>
-                <Image
-                height={20}
-                width={20}
-                source={icons.googleLogo}
-                className="size-5 mr-2 mt-0.5"
-                />
-                <Text className="text-black font-semibold text-base">Log in with Google!</Text>
-              </TouchableOpacity>
             </View>
           </View>
 

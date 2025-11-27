@@ -26,7 +26,7 @@ export default function RootLayout() {
 
   return (
     <>
-      <StatusBar hidden={true} />
+      <StatusBar barStyle="light-content" backgroundColor="#121212" />
       <Stack>
         <Stack.Screen 
         name="(auth)"

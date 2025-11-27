@@ -15,10 +15,15 @@ import "../../global.css";
 export default function Index() {
   const router = useRouter();
 
-  // navigating on signout
-  getAuth().onAuthStateChanged((user) => {
-    if (!user) router.replace('/(auth)/login');
-  })
+  useEffect(() => {
+    const unsubscribe = getAuth().onAuthStateChanged((user) => {
+      if (!user) {
+        router.replace('/(auth)/login');
+      }
+    });
+
+    return () => unsubscribe();
+  }, [router]);
 
   const {
     data: trendingMovies, 
